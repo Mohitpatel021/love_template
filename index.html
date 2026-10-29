@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>A Love Letter For My Forever • With All My Heart</title>
+  <meta name="description" content="A special collection of heartfelt love letters and sweet memories for the most precious girl in the world.">
+  
+  <!-- Romantic Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600;700&family=Dancing+Script:wght@500;700&family=Nunito:wght@300;400;600;700;800&family=Playfair+Display:ital,wght@0,500;0,700;1,400;1,600&display=swap" rel="stylesheet">
+  
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Floating Hearts Background Canvas -->
+  <canvas id="particles-canvas"></canvas>
+
+  <!-- Ambient Sound / Music Box Control -->
+  <div class="top-nav">
+    <button id="music-toggle-btn" class="nav-pill-btn" aria-label="Toggle Romantic Music Box">
+      <span class="btn-icon">🎵</span>
+      <span class="btn-text">Play Romantic Melodies</span>
+    </button>
+    <div class="top-nav-right">
+      <button id="customize-btn" class="nav-pill-btn secondary" aria-label="Personalize Names">
+        <span class="btn-icon">✏️</span>
+        <span class="btn-text">Personalize Names</span>
+      </button>
+      <button id="hug-btn" class="nav-pill-btn hug-btn" aria-label="Send Virtual Teddy Hug">
+        <span class="btn-icon">🧸</span>
+        <span class="btn-text">Send A Tight Hug</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Main Container -->
+  <main class="app-container">
+    
+    <!-- Hero / Welcome Header -->
+    <header class="hero-header">
+      <div class="sparkle-tag">✨ Made With Every Beat Of My Heart ✨</div>
+      <h1 class="main-title">
+        For My Dearest <span class="highlight-name" id="her-name-display">My Love</span>
+      </h1>
+      <p class="subtitle">
+        "Kuch baatein zubaan se nahi, dil ki gehraiyon se nikal kar aati hain...<br class="desktop-only">
+        This is a little secret sanctuary built just for you and my endless love."
+      </p>
+    </header>
+
+    <!-- Center Interactive Teddy Showcase -->
+    <section class="center-teddy-stage">
+      <div class="teddy-halo-ring"></div>
+      <div class="teddy-card">
+        <div class="teddy-img-container">
+          <img id="main-teddy-img" src="assets/teddy_couple.jpg" alt="Two cute fluffy teddy bears hugging a glowing pink heart" class="teddy-img">
+          <div class="floating-heart-bubble">💖</div>
+          <div class="floating-heart-bubble bubble-2">✨</div>
+          <div class="floating-heart-bubble bubble-3">🌸</div>
+        </div>
+        <div class="teddy-caption">
+          <span class="quote-sign">“</span>
+          <span id="teddy-whisper">Humesha mere paas rehna, mere dil ka sukoon ban kar...</span>
+          <span class="quote-sign">”</span>
+        </div>
+        <div class="interactive-reaction-row">
+          <button class="reaction-badge" data-reaction="kiss">
+            <span>😘</span> Give Kiss
+          </button>
+          <button class="reaction-badge" data-reaction="blush">
+            <span>🥰</span> Make Blush
+          </button>
+          <button class="reaction-badge" data-reaction="cuddle">
+            <span>🫂</span> Teddy Cuddle
+          </button>
+          <button class="reaction-badge" data-reaction="sparkle">
+            <span>✨</span> Magic Shower
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Letters Book & Envelope Navigation -->
+    <section class="letters-section" id="letters-section">
+      <div class="section-badge-wrapper">
+        <span class="section-badge">💌 Seven Sealed Letters From My Soul 💌</span>
+      </div>
+      
+      <!-- Letter Selector Tabs / Pills -->
+      <nav class="letters-tabs-bar" aria-label="Letters Navigation">
+        <button class="tab-btn active" data-letter="0">
+          <span class="tab-num">1</span>
+          <span class="tab-title">Pehli Nazar</span>
+        </button>
+        <button class="tab-btn" data-letter="1">
+          <span class="tab-num">2</span>
+          <span class="tab-title">Choti Choti Baatein</span>
+        </button>
+        <button class="tab-btn" data-letter="2">
+          <span class="tab-num">3</span>
+          <span class="tab-title">Mera Sukoon</span>
+        </button>
+        <button class="tab-btn" data-letter="3">
+          <span class="tab-num">4</span>
+          <span class="tab-title">Kyun Sirf Tum?</span>
+        </button>
+        <button class="tab-btn" data-letter="4">
+          <span class="tab-num">5</span>
+          <span class="tab-title">Ek Sacchi Baat</span>
+        </button>
+        <button class="tab-btn" data-letter="5">
+          <span class="tab-num">6</span>
+          <span class="tab-title">Mere Waade</span>
+        </button>
+        <button class="tab-btn" data-letter="6">
+          <span class="tab-num">7</span>
+          <span class="tab-title">Mera Hamesha</span>
+        </button>
+      </nav>
+
+      <!-- Envelope & Letter Display Area -->
+      <div class="letter-stage">
+        
+        <!-- Progress & Page Counter -->
+        <div class="letter-meta-header">
+          <span class="letter-count" id="letter-counter-text">Letter 1 of 7</span>
+          <div class="dots-progress" id="dots-progress">
+            <span class="dot active"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+          </div>
+          <button class="toggle-paper-view-btn" id="seal-toggle-btn" title="Toggle Envelope Seal">
+            <span class="seal-icon">✉️</span>
+            <span class="seal-text">Fold Envelope</span>
+          </button>
+        </div>
+
+        <!-- Mobile Swipe Guide Indicator -->
+        <div class="mobile-swipe-guide">
+          <span>👈 Swipe left/right on letter to flip 👉</span>
+        </div>
+
+        <!-- The Interactive Envelope & Parchment Letter Paper -->
+        <article class="letter-parchment opened" id="parchment-paper">
+          
+          <!-- Decorative Stamp & Postmark -->
+          <div class="letter-decorations">
+            <div class="postmark">
+              <span>SPECIAL DELIVERY</span>
+              <span class="postmark-date" id="postmark-date">FOREVER & ALWAYS</span>
+              <span>FROM MY HEART</span>
+            </div>
+            <div class="stamp">
+              <span class="stamp-icon">🧸</span>
+              <span class="stamp-text">LOVE AIR MAIL</span>
+            </div>
+          </div>
+
+          <!-- Letter Header -->
+          <div class="letter-greeting">
+            <h2 class="letter-subject" id="letter-title">The Day You Walked Into My World</h2>
+            <div class="letter-salutation">
+              Dearest <span class="her-name-inline">My Love</span>,
+            </div>
+          </div>
+
+          <!-- Letter Body Dynamic Text -->
+          <div class="letter-body" id="letter-content">
+            <!-- Content will be injected dynamically via JavaScript -->
+          </div>
+
+          <!-- Letter Signoff -->
+          <div class="letter-signoff">
+            <div class="signoff-content">
+              <p class="signoff-note">Dhadkan banke hamesha tumhare saath,</p>
+              <div class="signoff-signature" id="his-name-display">Yours Forever, Always</div>
+            </div>
+            <div class="wax-seal-badge" id="wax-seal" title="Sealed with endless love">
+              <span class="wax-heart">♥</span>
+              <span class="wax-text">WITH LOVE</span>
+            </div>
+          </div>
+
+        </article>
+
+        <!-- Navigation Controls: Prev & Next -->
+        <div class="letter-controls-row">
+          <button class="ctrl-btn prev" id="prev-letter-btn" disabled>
+            <span class="arrow">←</span>
+            <span>Previous Letter</span>
+          </button>
+
+          <button class="ctrl-btn next" id="next-letter-btn">
+            <span>Next Letter</span>
+            <span class="arrow">→</span>
+          </button>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Interactive Love Extras Section -->
+    <section class="extras-section">
+      
+      <!-- Extra 1: "Reasons Why I Love You" Jar -->
+      <div class="extra-card jar-card">
+        <div class="card-icon">🫙</div>
+        <h3>The "Infinite Reasons" Jar</h3>
+        <p class="card-desc">Whenever you doubt yourself, or need a smile, tap this jar to pull out a sweet little secret reason why I love you.</p>
+        <button class="pill-action-btn" id="open-jar-btn">
+          <span>✨ Pull A Reason</span>
+        </button>
+        <div class="jar-note-popup hidden" id="jar-note-display">
+          <p id="jar-note-text">"The way your eyes crinkle when you laugh genuinely at my silly jokes..."</p>
+        </div>
+      </div>
+
+      <!-- Extra 2: The Heartbeat / Love Meter -->
+      <div class="extra-card love-meter-card">
+        <div class="card-icon">♾️</div>
+        <h3>How Much Do I Love You?</h3>
+        <p class="card-desc">Slide this bar to check how much my heart loves you right now at this exact moment.</p>
+        <div class="slider-container">
+          <input type="range" id="love-slider" min="100" max="1000" value="100" class="custom-slider">
+          <div class="slider-value-display" id="love-meter-status">100% (Just the beginning...)</div>
+        </div>
+        <button class="pill-action-btn secondary" id="infinite-btn">
+          <span>❤️ Break The Scale to Infinity</span>
+        </button>
+      </div>
+
+      <!-- Extra 3: Sweet Voice / Teddy Message Note -->
+      <div class="extra-card teddy-note-card">
+        <div class="card-icon">🧸</div>
+        <h3>A Soft Promise For Tough Days</h3>
+        <p class="card-desc">
+          "Jab bhi kabhi udaas ho ya akela lage, yaad rakhna iss poori duniya mein ek shakhs hai jo tumhari ek muskaan ke liye apni saari khushiyan vaar sakta hai."
+        </p>
+        <button class="pill-action-btn" id="play-sweet-chime-btn">
+          <span>🔔 Send Soft Chime & Hug</span>
+        </button>
+      </div>
+
+    </section>
+
+    <!-- Footer -->
+    <footer class="romantic-footer">
+      <div class="footer-teddy">
+        <img src="assets/teddy_letter.jpg" alt="Cute teddy with love letter" class="mini-footer-teddy">
+      </div>
+      <p class="footer-love-text">
+        "Tu mera wo khwaab hai jo khuli aankhon se sach hua hai."
+      </p>
+      <p class="footer-subtext">
+        Created with unlimited love, care, and sleepless devotion for <span class="her-name-inline">her</span>.
+      </p>
+    </footer>
+
+  </main>
+
+  <!-- Modal for Customizing Names -->
+  <div class="modal-backdrop hidden" id="custom-modal">
+    <div class="modal-box">
+      <div class="modal-header">
+        <h3>Customize Names & Details</h3>
+        <button class="modal-close" id="modal-close-btn">&times;</button>
+      </div>
+      <div class="modal-body">
+        <p class="modal-tip">Apni girlfriend ka pyara sa naam ya nickname daalo taaki yeh pura page uske naam ho jaye! 💕</p>
+        <div class="input-group">
+          <label for="input-her-name">Her Name / Cute Nickname (e.g. Baccha, Jaanu, Pari, Shona):</label>
+          <input type="text" id="input-her-name" placeholder="Enter her nickname or name" value="My Love">
+        </div>
+        <div class="input-group">
+          <label for="input-his-name">Your Name / How you sign your letters:</label>
+          <input type="text" id="input-his-name" placeholder="Your name (e.g. Yours Forever, Mohit)" value="Yours Forever & Always">
+        </div>
+        <div class="input-group">
+          <label for="input-special-date">Special Date / Anniversary (Optional):</label>
+          <input type="text" id="input-special-date" placeholder="e.g. 14 February or Forever & Always" value="FOREVER & ALWAYS">
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="pill-action-btn" id="save-names-btn">Save & Update Letters 💖</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Big Hug Overlay Animation Container -->
+  <div class="hug-overlay hidden" id="hug-overlay">
+    <div class="hug-content">
+      <div class="huge-teddy-anim">🧸❤️🧸</div>
+      <h2>A Warm, Tight Teddy Hug For You!</h2>
+      <p id="hug-dialogue">"Sab kuch theek ho jayega, main hamesha tumhare saath hoon. Love you so so much!"</p>
+      <button class="pill-action-btn" id="close-hug-btn">Hold This Hug 🥰</button>
+    </div>
+  </div>
+
+  <!-- Floating Mini Audio Control for Mobile -->
+  <button id="floating-music-fab" class="floating-music-btn" aria-label="Toggle Romantic Music">
+    <span class="fab-icon">🎵</span>
+  </button>
+
+  <!-- JavaScript -->
+  <script src="script.js"></script>
+</body>
+</html>
